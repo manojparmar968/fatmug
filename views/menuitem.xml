@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <menuitem name="Vendor Service Portal"
+        id="menu_vendor_self_service_portal_menu_root">
+        <menuitem id="menu_vendor_forecast" name="Vendor Forecast" action="action_vendor_forecast" />
+        <menuitem id="menu_vendor_adjustment_request" name="vendor adjustment request" action="action_vendor_adjustment_request" />
+    </menuitem>
+    
+</odoo>
+ <!-- groups="account.group_account_readonly" -->

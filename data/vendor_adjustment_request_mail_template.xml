@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="email_template_vendor_adjustment_request" model="mail.template">
+        <field name="name">vendor_self_service_portal: Procurement Team</field>
+        <field name="model_id" ref="vendor_self_service_portal.model_vendor_adjustment_request"/>
+        <field name="subject">{{ object.company_id.name }}, Procurement Team </field>
+        <field name="email_from">{{ (object.user_id.email) }}</field>
+        <field name="email_to">{{ object.partner_id.email }}</field>
+        <field name="partner_to">{{ object.partner_id.id }}</field>
+        <field name="description">Sent to Procurement Team</field>
+        <field name="body_html" type="html">
+            <div style="margin: 0px; padding: 0px;">
+                <p style="margin: 0px; padding: 0px; font-size: 13px;">
+                    Hello Procurement Team
+                    
+                    <br/><br/>
+                    A new adjustment request has been submitted.<br/><br/>
+                    
+                    Order ID: <t t-out="object.order_id.name"></t><br/>
+                    Adjustment Detail: <t t-out="object.adjustment_detail"></t><br/>
+                    Comment: <t t-out="object.comment"></t>
+                    <br/><br/>
+                    Best regards,
+                    <br/><br/>
+                    <t t-out="object.company_id.name or ''">YourCompany</t>.
+                </p>
+                <!-- <![CDATA[
+                    <p>Hello Procurement Team,</p>
+                    <p>A new adjustment request has been submitted.</p>
+                    <p>Order ID: {{object.order_id.name}}</p>
+                    <p>Adjustment Detail: {{object.adjustment_detail}}</p>
+                    <p>Comment: {{object.comment}}</p>
+                    <p>Best regards,</p>
+                    <p>Your Company</p>
+                ]]> -->
+            </div>
+        </field>
+        <field name="lang">{{ object.partner_id.lang }}</field>
+        <field name="auto_delete" eval="True"/>
+    </record>  
+</odoo>
+
+<!-- 
+    object.user_id.email_formatted ==>> OdooBot" <odoobot@example.com>
+-->
